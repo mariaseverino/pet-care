@@ -25,5 +25,13 @@
       "id": "4f57",
       "slug": "nest"
     }
+  ],
+  "users": [
+    {
+      "id": "937f",
+      "name": "Isobel",
+      "email": "maria.severino.pb@compasso.com.br",
+      "senha": "senha"
+    }
   ]
 }

@@ -24,7 +24,7 @@ export function AddTag() {
     }
     return (
         <form action={handleCreateTag} method="POST">
-            <input type="text" name="slug" placeholder="Slug da tag" />
+            <input type="text" name="slu;...\;;g" placeholder="Slug da tag" />
             <AddTagButton />
         </form>
     );
