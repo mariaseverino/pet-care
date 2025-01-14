@@ -1,14 +1,16 @@
-import { revalidateTag } from 'next/cache';
+import UserForm from '@/components/user-form';
+import Image from 'next/image';
+import styles from './register.module.css';
 
 export default function Register() {
     async function handleRegisterUser(form: FormData) {
         'use server';
 
-        const name = form.get('name');
+        // const name = form.get('name');
         const email = form.get('email');
         const senha = form.get('senha');
 
-        if (!name || !email || !senha) {
+        if (!email || !senha) {
             return;
         }
 
@@ -17,22 +19,32 @@ export default function Register() {
         await fetch('http://localhost:3333/users', {
             method: 'POST',
             body: JSON.stringify({
-                name,
+                name: '',
                 email,
                 senha,
             }),
         });
 
-        revalidateTag('get-tags');
+        // revalidateTag('get-tags');
     }
     return (
-        <div>
-            <form action={handleRegisterUser} method="POST">
-                <input type="text" name="name" placeholder="Nome do tutor" />
-                <input type="text" name="email" placeholder="Email" />
-                <input type="password" name="senha" placeholder="Senha" />
-                <button type="submit">Registrar</button>
-            </form>
+        <div className={styles.wrapper}>
+            <div className={styles.imagem}>
+                <Image
+                    src="/register.svg"
+                    alt="Mulher com seu cachorro"
+                    width={500}
+                    height={500}
+                    layout="responsive"
+                    priority
+                    className={styles.img}
+                />
+            </div>
+            <UserForm
+                title="Crie sua conta"
+                action="register"
+                handle={() => handleRegisterUser}
+            />
         </div>
     );
 }
