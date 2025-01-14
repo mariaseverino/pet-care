@@ -3,7 +3,7 @@ import styles from './user-form.module.css';
 interface UserFormProps {
     title: string;
     action: string;
-    handle: () => void;
+    handle: (event: React.FormData<HTMLFormData>) => void;
 }
 
 export default function UserForm({ title, action, handle }: UserFormProps) {
